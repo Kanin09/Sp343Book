@@ -19,7 +19,7 @@ public class Sp343bookApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Hello World");
-        showAllItem();
+
     }
     private void showAllItem() {
         List<Book> books = repo.findAll();

@@ -20,19 +20,6 @@ public class Book {
     private String[] authors;
     private String[] categories;
 
-    public Book(String id, String title, String isbn, int pageCount, String publishedDate, String thumbnailUrl, String shortDescription, String longDescription, String status, String[] authors, String[] categories) {
-        this.id = id;
-        this.title = title;
-        this.isbn = isbn;
-        this.pageCount = pageCount;
-        this.publishedDate = publishedDate;
-        this.thumbnailUrl = thumbnailUrl;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
-        this.status = status;
-        this.authors = authors;
-        this.categories = categories;
-    }
 
     public String getId() {
         return id;

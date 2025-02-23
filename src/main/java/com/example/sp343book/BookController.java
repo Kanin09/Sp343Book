@@ -2,32 +2,41 @@ package com.example.sp343book;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class BookController {
 
     @Autowired
     private BookRepository repo;
 
     @GetMapping("/book")
-    List<Book> getAllBook(){
-        return repo.findAll();
+    String getBookisbn(Model model) {
+       model.addAttribute("books", new Book());
+       return "addbook";
     }
-    @GetMapping("/book/isbn/{isbn}")
-    List<Book> findBooksByIsbn( @PathVariable String isbn) {
-        return repo.findBooksByIsbn(isbn);
+    @PostMapping("/addbook")
+    String submidBook(@ModelAttribute Book book, Model model) {
+        model.addAttribute("books", repo.findBooksByIsbn(book.getIsbn()));
+        return "result";
     }
-    @GetMapping("/book/title/{title}")
-    List<Book> findBooksByTitle(@PathVariable String title) {
-        return repo.findBooksByTitle(title);
-    }
-    @GetMapping("/book/pageCount/{gte}/{lte}")
-    List<Book> findBooksByPageCount(@PathVariable int gte, @PathVariable int lte) {
-        return repo.findBooksByPageCount(gte, lte);
-    }
+
+
+//    @GetMapping("/addbook")
+//    String addBook(Model model) {
+//        model.addAttribute("book", new Book());
+//        return "addbook";
+//    }
+//    @PostMapping("/addbook")
+//    String submitBooks(@ModelAttribute Book book, Model model) {
+//        model.addAttribute("book", book);
+//        repo.save(book);
+//        return "result";
+//
+//    }
+
 }

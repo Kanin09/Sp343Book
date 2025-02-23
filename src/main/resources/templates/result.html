@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Add products form</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,6 +8,13 @@
 </head>
 <body>
 <div class="container mt-3">
+  <h2>find a favorite book</h2>
+  <br>
+  <p th:text="'isbn :'+${books.isbn}"/>
+  <p th:text="'title :'+${books.title}"/>
+  <p th:text="'page count:'+${books.pageCount}"/>
+  <p th:text="'published Date:'+${books.publishedDate}"/>
+  <a href="/addbook">finding another book</a>
 </div>
 </body>
 </html>
